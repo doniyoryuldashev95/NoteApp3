@@ -131,32 +131,40 @@ class QuizFragment : Fragment() {
         binding.firstAnswer.setOnClickListener {
             if (binding.firstAnswer.text.equals(wordEntity.description)) {
                 binding.firstAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                binding.timer.text = "True"
             } else {
                 binding.firstAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                binding.timer.text = "False"
             }
             timer(binding.firstAnswer)
         }
         binding.secondAnswer.setOnClickListener {
             if (binding.secondAnswer.text.equals(wordEntity.description)) {
                 binding.secondAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                binding.timer.text = "True"
             } else {
                 binding.secondAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                binding.timer.text = "False"
             }
             timer(binding.secondAnswer)
         }
         binding.thirdAnswer.setOnClickListener {
             if (binding.thirdAnswer.text.equals(wordEntity.description)) {
                 binding.thirdAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                binding.timer.text = "True"
             } else {
                 binding.thirdAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                binding.timer.text = "False"
             }
             timer(binding.thirdAnswer)
         }
         binding.fourthAnswer.setOnClickListener {
             if (binding.fourthAnswer.text.equals(wordEntity.description)) {
                 binding.fourthAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                binding.timer.text = "True"
             } else {
                 binding.fourthAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                binding.timer.text = "False"
             }
             timer(binding.fourthAnswer)
         }
@@ -164,7 +172,7 @@ class QuizFragment : Fragment() {
 
     private fun timer(textView: TextView){
         countDownTimer.cancel()
-        binding.timer.text = ""
+//        binding.timer.text = ""
         theTime = object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
