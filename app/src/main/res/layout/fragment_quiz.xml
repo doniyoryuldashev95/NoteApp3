@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.add_word_screen.AddWordFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#9df9ef">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_transparent_outlined_12"
+            android:padding="5dp"
+            android:paddingStart="13dp"
+            android:src="@drawable/baseline_arrow_back_ios" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/mont_regular"
+            android:gravity="center"
+            android:paddingEnd="40dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/black"
+            android:text="Quiz words"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_transparent_outlined_12"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/boxLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:fontFamily="@font/mont_regular"
+                android:text="1. What is the translation of Heart?"/>
+
+            <TextView
+                android:id="@+id/firstAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Quiz words"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:background="@drawable/bg_transparent_outlined_12" />
+            <TextView
+                android:id="@+id/secondAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Quiz words"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_transparent_outlined_12" />
+            <TextView
+                android:id="@+id/thirdAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Quiz words"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:background="@drawable/bg_transparent_outlined_12" />
+            <TextView
+                android:id="@+id/fourthAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Quiz words"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:background="@drawable/bg_transparent_outlined_12" />
+
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="100dp"
+                android:fontFamily="@font/mont_regular"
+                android:text="5"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/emptyText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text=""/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/answerRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

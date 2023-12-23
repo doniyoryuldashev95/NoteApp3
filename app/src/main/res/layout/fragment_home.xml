@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".screens.home.HomeFragment"
+    android:orientation="vertical">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/gradient_main_background"
+                    android:layout_below="@id/toolbar"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="#9df9ef"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp">
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_white_stroke_outlined"
+                        />
+
+                </LinearLayout>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mainCard"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/add_button"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#9df9ef"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_below="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/word_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:layout_toStartOf="@id/add_button"
+                android:text="Cooperate"
+                android:textSize="25sp"
+                android:fontFamily="monospace"/>
+
+            <TextView
+                android:id="@+id/word_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/word_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toStartOf="@id/add_button"
+                android:text="Work jointly towards the same end."
+                android:fontFamily="@font/mont_regular"/>
+
+
+        </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+                <com.example.noteapp.custom_view.VerticalButton
+                    android:id="@+id/add_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/toolbar"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:textSize="16sp"
+                    android:background="@drawable/bg_transparent_outlined_12"
+                    android:elevation="6dp"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:paddingTop="15dp"
+                    android:text="Add word +"
+                    android:textAllCaps="false"
+                    android:textColor="#000000" />
+
+
+    </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/bg_white_outlined"
+               android:layout_marginVertical="5dp"
+                android:elevation="5dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wordListRecycler"    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+
+</LinearLayout>
