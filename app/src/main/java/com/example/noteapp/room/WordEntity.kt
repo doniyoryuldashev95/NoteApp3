@@ -9,10 +9,10 @@ import java.io.Serializable
 data class WordEntity(
 
     @PrimaryKey(autoGenerate = true)
-    val uid: Int = 0,
+    var uid: Int = 0,
 
-    val title: String = "",
-    val description: String? = "",
+    var title: String = "",
+    var description: String? = "",
     @ColumnInfo("color", defaultValue = "")
-    val color:String? = ""
+    var color:String? = ""
 ) : Serializable
