@@ -3,6 +3,7 @@ package com.example.noteapp.screens.detail
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,8 @@ class DetailFragment : Fragment() {
             }
             wordTitle.text = data.title
             wordDescription.text = data.description
+            Log.d("CheckText", "onViewCreated: ${data.title} ${data.description}")
+
 
         }
     }

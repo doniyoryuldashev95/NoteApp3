@@ -3,6 +3,7 @@ package com.example.noteapp.screens.add_word_screen
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -82,6 +83,9 @@ class AddWordFragment : Fragment() {
                     appDatabase.wordDao().insertUser(word)
                     Toast.makeText(requireContext(),"Successfully added",Toast.LENGTH_SHORT).show()
                     requireActivity().onBackPressed()
+//                    Toast.makeText(requireContext(),word.title+" "+word.description,Toast.LENGTH_SHORT).show()
+                    Log.d("CheckText", "onViewCreated: ${word.title} ${word.description}")
+
                 }
             }
 

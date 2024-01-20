@@ -58,8 +58,17 @@
                 android:layout_marginVertical="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_below="@id/toolbar">
+                <TextView
+                    android:id="@+id/noWordsTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="No words"
+                    android:gravity="center"
+                    android:textSize="35sp"
+                    android:visibility="gone"/>
 
         <LinearLayout
+            android:id="@+id/titleAndDescriptionLy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -68,11 +77,9 @@
                 android:id="@+id/word_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
-                android:layout_toStartOf="@id/add_button"
-                android:text="Cooperate"
+                android:text="ft"
                 android:textSize="25sp"
                 android:fontFamily="monospace"/>
 
@@ -80,13 +87,10 @@
                 android:id="@+id/word_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/word_title"
-                android:layout_alignParentStart="true"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toStartOf="@id/add_button"
-                android:text="Work jointly towards the same end."
-                android:fontFamily="@font/mont_regular"/>
+                android:text="ft"
+                android:fontFamily="monospace"
+                android:textSize="16sp"/>
 
 
         </LinearLayout>

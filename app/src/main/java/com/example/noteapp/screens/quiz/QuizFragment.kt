@@ -1,6 +1,7 @@
 package com.example.noteapp.screens.quiz
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -8,12 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapp.R
-import com.example.noteapp.adapters.CustomAdapter
 import com.example.noteapp.adapters.QuizAdapter
 import com.example.noteapp.databinding.FragmentQuizBinding
 import com.example.noteapp.room.AppDatabase
@@ -27,8 +26,9 @@ class QuizFragment : Fragment() {
     private lateinit var quizAdapter: QuizAdapter
     private lateinit var wordList: ArrayList<WordEntity>
     private var listIndex = 0
-    private lateinit var countDownTimer: CountDownTimer
-    private lateinit var theTime:CountDownTimer
+    private var countDownTimer: CountDownTimer? = null
+    private var theTime: CountDownTimer? = null
+    private var isPressed: Boolean = false
 
 
     override fun onAttach(context: Context) {
@@ -68,7 +68,6 @@ class QuizFragment : Fragment() {
         shuffleList.shuffle()
         if (wordList.isNotEmpty() && wordList.size > 4 && wordList.size > listIndex) {
             answerLayoutVisible()
-            wordList
             Log.d("TAG", "drawerMethod: ${wordList[listIndex].title} $listIndex")
             binding.question.text = wordList[listIndex].title
             for (secondInnerList in shuffleList) {
@@ -90,6 +89,7 @@ class QuizFragment : Fragment() {
 
                 // Callback function, fired on regular interval
                 override fun onTick(millisUntilFinished: Long) {
+                    binding.timer.setTextColor(Color.BLACK)
                     binding.timer.text = (millisUntilFinished / 1000).toString()
 
                 }
@@ -100,11 +100,12 @@ class QuizFragment : Fragment() {
                     listIndex++
                     buildList = arrayListOf()
                     drawerMethod()
+                    isPressed = false
 //                    countDownTimer.cancel()
                 }
             }.start()
 
-        } else if (wordList.size == listIndex) {
+        } else if (wordList.isNotEmpty() && wordList.size == listIndex) {
             binding.emptyText.text = "Congratulation! You just have finished the quiz."
 //            Log.d("TAG", "drawerMethod: this s")
             answerLayoutInvisible()
@@ -128,50 +129,78 @@ class QuizFragment : Fragment() {
     }
 
     private fun answerClicks(wordEntity: WordEntity) {
+        val shake: Animation =
+            AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
+
         binding.firstAnswer.setOnClickListener {
-            if (binding.firstAnswer.text.equals(wordEntity.description)) {
-                binding.firstAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
-                binding.timer.text = "True"
-            } else {
-                binding.firstAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
-                binding.timer.text = "False"
+            if (!isPressed) {
+                if (binding.firstAnswer.text.equals(wordEntity.description)) {
+                    binding.firstAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                    binding.timer.text = "True"
+                    binding.timer.setTextColor(Color.parseColor("#36B73B"))
+                } else {
+                    binding.firstAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                    binding.timer.text = "False"
+                    binding.timer.setTextColor(Color.parseColor("#F5392B"))
+                    binding.timer.startAnimation(shake)
+                }
+                timer(binding.firstAnswer)
+                isPressed = true
             }
-            timer(binding.firstAnswer)
         }
         binding.secondAnswer.setOnClickListener {
-            if (binding.secondAnswer.text.equals(wordEntity.description)) {
-                binding.secondAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
-                binding.timer.text = "True"
-            } else {
-                binding.secondAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
-                binding.timer.text = "False"
+            if (!isPressed) {
+                if (binding.secondAnswer.text.equals(wordEntity.description)) {
+                    binding.secondAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                    binding.timer.text = "True"
+                    binding.timer.setTextColor(Color.parseColor("#36B73B"))
+                } else {
+                    binding.secondAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                    binding.timer.text = "False"
+                    binding.timer.setTextColor(Color.parseColor("#F5392B"))
+                    binding.timer.startAnimation(shake)
+                }
+                timer(binding.secondAnswer)
+                isPressed = true
             }
-            timer(binding.secondAnswer)
         }
         binding.thirdAnswer.setOnClickListener {
-            if (binding.thirdAnswer.text.equals(wordEntity.description)) {
-                binding.thirdAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
-                binding.timer.text = "True"
-            } else {
-                binding.thirdAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
-                binding.timer.text = "False"
+            if (!isPressed) {
+                if (binding.thirdAnswer.text.equals(wordEntity.description)) {
+                    binding.thirdAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                    binding.timer.text = "True"
+                    binding.timer.setTextColor(Color.parseColor("#36B73B"))
+                } else {
+                    binding.thirdAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                    binding.timer.text = "False"
+                    binding.timer.setTextColor(Color.parseColor("#F5392B"))
+                    binding.timer.startAnimation(shake)
+                }
+                timer(binding.thirdAnswer)
+                isPressed = true
             }
-            timer(binding.thirdAnswer)
         }
         binding.fourthAnswer.setOnClickListener {
-            if (binding.fourthAnswer.text.equals(wordEntity.description)) {
-                binding.fourthAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
-                binding.timer.text = "True"
-            } else {
-                binding.fourthAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
-                binding.timer.text = "False"
+            if (!isPressed) {
+                if (binding.fourthAnswer.text.equals(wordEntity.description)) {
+                    binding.fourthAnswer.setBackgroundResource(R.drawable.bg_green_true_12)
+                    binding.timer.text = "True"
+                    binding.timer.setTextColor(Color.parseColor("#36B73B"))
+                } else {
+                    binding.fourthAnswer.setBackgroundResource(R.drawable.bg_red_false_12)
+                    binding.timer.text = "False"
+                    binding.timer.setTextColor(Color.parseColor("#F5392B"))
+                    binding.timer.startAnimation(shake)
+                }
+                timer(binding.fourthAnswer)
+                isPressed = true
             }
-            timer(binding.fourthAnswer)
         }
+
     }
 
-    private fun timer(textView: TextView){
-        countDownTimer.cancel()
+    private fun timer(textView: TextView) {
+        countDownTimer?.cancel()
 //        binding.timer.text = ""
         theTime = object : CountDownTimer(2000, 1000) {
 
@@ -183,9 +212,16 @@ class QuizFragment : Fragment() {
                 listIndex++
                 textView.setBackgroundResource(R.drawable.bg_transparent_outlined_12)
                 drawerMethod()
-                theTime.cancel()
+                theTime?.cancel()
+                isPressed = false
             }
         }
-        theTime.start()
+        theTime?.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        theTime?.cancel()
+        countDownTimer?.cancel()
     }
 }
