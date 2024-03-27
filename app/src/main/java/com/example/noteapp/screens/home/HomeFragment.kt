@@ -72,11 +72,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setDecorView()
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            this.view?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-        }
-        binding.searchView.queryHint = "No data found"
+
+        binding.searchView.queryHint = "Search here"
 //        binding.searchView.isIconified = false
         binding.searchView.clearFocus()
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
@@ -269,6 +268,22 @@ class HomeFragment : Fragment() {
             val bundle = Bundle()
             bundle.putSerializable("WordEntity",it)
             findNavController().navigate(R.id.action_homeFragment_to_detailFragment,bundle)
+        }
+    }
+
+    private fun setDecorView(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val view = requireActivity().window.decorView
+            view.systemUiVisibility =
+                view.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        } else {
+            val view = requireActivity().window.decorView
+            view.systemUiVisibility =
+                view.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.view?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
     }
 }

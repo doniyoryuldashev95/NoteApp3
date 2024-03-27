@@ -1,13 +1,10 @@
 package com.example.noteapp
 
-import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
-import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
@@ -15,7 +12,6 @@ import com.example.noteapp.adapters.WordAdapter
 import com.example.noteapp.databinding.ActivityMainBinding
 import com.example.noteapp.room.AppDatabase
 import com.example.noteapp.room.WordEntity
-import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.database.DatabaseReference
 
 class MainActivity : AppCompatActivity(){
@@ -34,15 +30,15 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val window = this.window
-        window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window?.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        //icon color -> black
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-//            window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
 
-//            window?.decorView?.systemUiVisibility = 0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val view = getWindow().decorView
+            view.systemUiVisibility =
+                view.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        } else {
+            val view = getWindow().decorView
+            view.systemUiVisibility =
+                view.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
         }
 
 

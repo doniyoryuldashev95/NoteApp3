@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.add_word_screen.AddWordFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#9df9ef">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_transparent_outlined_12"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:paddingStart="13dp"
+            android:src="@drawable/baseline_arrow_back_ios" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/mont_regular"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Quiz Results"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_transparent_outlined_12"
+        android:layout_margin="16dp"
+        android:id="@+id/quizContainer"
+        android:paddingHorizontal="16dp"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/quizResults"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp">
+
+            <!-- Content Area -->
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Congratulations! You did well."
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Option to Restart or Return -->
+
+            <TextView
+                android:id="@+id/textViewCorrectAnswers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTitle"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                tools:text="Total Correct Answers: 10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFalseAnswers" />
+
+            <TextView
+                android:id="@+id/textViewFalseAnswers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewCorrectAnswers"
+                android:layout_marginStart="10dp"
+                tools:text="Total False Answers: 5"
+                android:textSize="18dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRestartQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Restart Quiz"
+            android:background="@drawable/bg_transparent_outlined_12"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:fontFamily="@font/mont_regular"
+            android:textAllCaps="false"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonReturnToMenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonReturnToMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Return to Home"
+            android:background="@drawable/bg_transparent_outlined_12"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:fontFamily="@font/mont_regular"
+            android:textAllCaps="false"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</LinearLayout>

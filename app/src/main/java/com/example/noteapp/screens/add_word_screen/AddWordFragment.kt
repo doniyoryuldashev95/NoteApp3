@@ -21,9 +21,9 @@ class AddWordFragment : Fragment() {
 
     private lateinit var viewModel: AddWordViewModel
     private lateinit var binding: FragmentAddWordBinding
-    private lateinit var colorAdapter: ColorAdapter
-    private lateinit var colorList: ArrayList<ColorObject>
-    private var colorObject = ColorObject()
+//    private lateinit var colorAdapter: ColorAdapter
+//    private lateinit var colorList: ArrayList<ColorObject>
+//    private var colorObject = ColorObject()
 //    private val appDatabase: AppDatabase by lazy {
 //        AppDatabase.getInstance(requireContext())
 //    }
@@ -34,20 +34,20 @@ class AddWordFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         appDatabase = AppDatabase.getInstance(context)
-        colorList = arrayListOf(
-            ColorObject("#51e2f5","Bright blue"),
-            ColorObject("#9df9ef","Blue Green"),
-            ColorObject("#edf756","Dusty White"),
-            ColorObject("#ffa8B6","Pink Sand"),
-            ColorObject("#a28089","Dark Sand"),
-            ColorObject("#d0bdf4","Medium Purple"),
-            ColorObject("#8458B3","Purple Pain"),
-            ColorObject("#fbe3e8","Pinky"),
-            ColorObject("#5cbdb9","Blue Greeny"),
-            ColorObject("#ebf6f5","Teeny Greeny"),
-            ColorObject("#beef00","Bright Green"),
-            ColorObject("#e1b382","Sand Tan"),
-            )
+//        colorList = arrayListOf(
+//            ColorObject("#51e2f5","Bright blue"),
+//            ColorObject("#9df9ef","Blue Green"),
+//            ColorObject("#edf756","Dusty White"),
+//            ColorObject("#ffa8B6","Pink Sand"),
+//            ColorObject("#a28089","Dark Sand"),
+//            ColorObject("#d0bdf4","Medium Purple"),
+//            ColorObject("#8458B3","Purple Pain"),
+//            ColorObject("#fbe3e8","Pinky"),
+//            ColorObject("#5cbdb9","Blue Greeny"),
+//            ColorObject("#ebf6f5","Teeny Greeny"),
+//            ColorObject("#beef00","Bright Green"),
+//            ColorObject("#e1b382","Sand Tan"),
+//            )
     }
 
     override fun onCreateView(
@@ -72,14 +72,12 @@ class AddWordFragment : Fragment() {
         binding.addButton.setOnClickListener {
 
             binding.apply {
-                if (wordTitle.text.isNullOrEmpty()||wordDescription.text.isNullOrEmpty()||colorObject.color.isNullOrEmpty()){
+                if (wordTitle.text.isNullOrEmpty()||wordDescription.text.isNullOrEmpty()){
                     Toast.makeText(requireContext(),"Please fill all in",Toast.LENGTH_SHORT).show()
                 } else {
                     val word = WordEntity(
                         title = wordTitle.text.toString(),
-                        description = wordDescription.text.toString(),
-                        color = colorObject.color
-                    )
+                        description = wordDescription.text.toString())
                     appDatabase.wordDao().insertUser(word)
                     Toast.makeText(requireContext(),"Successfully added",Toast.LENGTH_SHORT).show()
                     requireActivity().onBackPressed()
@@ -91,11 +89,11 @@ class AddWordFragment : Fragment() {
 
         }
         binding.colorRecycler.layoutManager = GridLayoutManager(requireContext(),6)
-        colorAdapter = ColorAdapter(colorList)
-        binding.colorRecycler.adapter = colorAdapter
-        colorAdapter.setOnItemClickListener {
-            colorObject = it
-        }
+//        colorAdapter = ColorAdapter(colorList)
+//        binding.colorRecycler.adapter = colorAdapter
+//        colorAdapter.setOnItemClickListener {
+//            colorObject = it
+//        }
 //        binding.apply {
 //            val note = Word(wordTitle.text.toString(), wordDescription.text.toString())
 //
